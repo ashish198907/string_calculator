@@ -16,4 +16,12 @@ describe StringCalculator do
   it 'should return 0 for an empty string' do
     expect(calculator.calculate('')).to eq(0)
   end
+
+  it 'should return a number if the passed string contains no delimiters' do
+    expect(calculator.calculate('123')).to eq (123)
+  end
+
+  it 'should return the sum of the numbers in the passed string, if the passed string contains comma delimiters' do
+    expect(calculator.calculate('12,34')).to eq(46)
+  end
 end
