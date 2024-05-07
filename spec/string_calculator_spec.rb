@@ -17,6 +17,10 @@ describe StringCalculator do
     expect(calculator.calculate('')).to eq(0)
   end
 
+  it 'should return 0 for 0 string' do
+    expect(calculator.calculate('0')).to eq(0)
+  end
+
   it 'should return a number if the passed string contains no delimiters' do
     expect(calculator.calculate('123')).to eq(123)
   end
@@ -39,5 +43,17 @@ describe StringCalculator do
 
   it 'should ignore numbers larger than 1000' do
     expect(calculator.calculate("//;\n1;2:1001")).to eq(3)
+  end
+
+  it 'should handle random delimiters of any length' do
+    expect(calculator.calculate("//[***];\n1***2***3")).to eq(6)
+  end
+
+  it 'should handle multiple delimiters' do
+    expect(calculator.calculate("//[*][%];\n1*2%3")).to eq(6)
+  end
+
+  it 'should handle multiple delimiters of any length' do
+    expect(calculator.calculate("//[***][%%];\n1***2%%3")).to eq(6)
   end
 end
