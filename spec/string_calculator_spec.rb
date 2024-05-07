@@ -32,4 +32,12 @@ describe StringCalculator do
   it 'should handle multiple random delimiters' do
     expect(calculator.calculate("//;\n1;2")).to eq(3)
   end
+
+  it 'should not accept negative numbers' do
+    expect{ calculator.calculate("100,-200") }.to raise_error("cannot accept negatives - -200")
+  end
+
+  it 'should ignore numbers larger than 1000' do
+    expect(calculator.calculate("//;\n1;2:1001")).to eq(3)
+  end
 end
